@@ -28,7 +28,7 @@ export default function Features() {
               transition={{ delay: 0.05 * idx }}
               className="p-6 rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-black/40 backdrop-blur shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
             >
-              <f.icon className="mb-3" />
+              <f.icon className="mb-3 text-[var(--brand-600)]" />
               <h3 className="font-semibold text-lg">{f.title}</h3>
               <p className="text-sm text-gray-600 dark:text-gray-300">{f.desc}</p>
             </motion.div>

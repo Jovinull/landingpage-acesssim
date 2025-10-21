@@ -1,21 +1,33 @@
-/* app/globals.css — Tailwind v4 style */
+/* app/globals.css — Tailwind v4 style with logo-based palette */
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 
-  /* Paleta da marca (ajuste como quiser) */
-  --brand-50:  #eefaff;
-  --brand-100: #d6efff;
-  --brand-200: #b3e3ff;
-  --brand-300: #85d3ff;
-  --brand-400: #4fbaff;
-  --brand-500: #2099ff;
-  --brand-600: #0f77e6;
-  --brand-700: #0e60b8;
-  --brand-800: #104f90;
-  --brand-900: #123f70;
+  /* COOL (primary) — cyan/blue from the logo */
+  --brand-50: #ecfbff;
+  --brand-100: #d4f5ff;
+  --brand-200: #a7e8ff;
+  --brand-300: #75d8ff;
+  --brand-400: #3bc5ff;
+  --brand-500: #08b0ff;
+  --brand-600: #0096e6;
+  --brand-700: #0078b8;
+  --brand-800: #0a5f90;
+  --brand-900: #0b3c70;
+
+  /* WARM (accent) — orange/red from the logo */
+  --accent-50: #fff3e8;
+  --accent-100: #ffe3cc;
+  --accent-200: #ffc199;
+  --accent-300: #ff9a66;
+  --accent-400: #ff7a3a;
+  --accent-500: #ff6122;
+  --accent-600: #e74d18;
+  --accent-700: #c53d12;
+  --accent-800: #9e300d;
+  --accent-900: #7c260a;
 
   --muted: #6b7280;
 }
@@ -35,7 +47,11 @@
   }
 }
 
-html, body { height: 100%; }
+html,
+body {
+  height: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -43,7 +59,7 @@ body {
   scroll-behavior: smooth;
 }
 
-/* utilitários simples */
+/* Utilities */
 .container-x {
   margin-left: auto;
   margin-right: auto;
@@ -51,18 +67,63 @@ body {
   padding-right: 1rem;
   max-width: 72rem;
 }
+
 .link-underline {
   text-decoration: underline;
   text-decoration-color: transparent;
   text-underline-offset: 4px;
   transition: text-decoration-color .2s ease;
 }
-.link-underline:hover { text-decoration-color: var(--brand-400); }
 
-/* (opcional) scrollbar */
-*::-webkit-scrollbar { width: 10px; height: 10px; }
+.link-underline:hover {
+  text-decoration-color: var(--brand-400);
+}
+
+/* Gradient text using logo palette */
+.text-gradient {
+  background: linear-gradient(90deg, var(--accent-500), var(--brand-600));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Primary CTA button (warm->cool) */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent-500), var(--brand-600));
+  color: white;
+  box-shadow: 0 10px 40px rgba(32, 153, 255, 0.35);
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 12px 44px rgba(32, 153, 255, 0.45);
+}
+
+/* Subtle badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent-400) 15%, transparent), color-mix(in srgb, var(--brand-600) 15%, transparent));
+  color: color-mix(in srgb, var(--brand-900) 80%, black);
+}
+
+/* Optional scrollbar */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
 *::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--brand-500) 0%, var(--brand-600) 100%);
+  background: linear-gradient(180deg, var(--accent-500) 0%, var(--brand-600) 100%);
   border-radius: 9999px;
 }
-*::-webkit-scrollbar-track { background: transparent; }
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}

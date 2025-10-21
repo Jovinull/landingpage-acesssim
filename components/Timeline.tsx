@@ -17,7 +17,7 @@ export default function Timeline() {
           [Missão, visão e proposta central. Público atendido e impacto esperado.]
         </p>
         <div className="relative">
-          <div className="absolute left-4 md:left-1/2 h-full w-[2px] bg-gradient-to-b from-[color-mix(in_srgb,var(--brand-400)_70%,transparent)] to-[color-mix(in_srgb,var(--brand-600)_70%,transparent)] -z-10" />
+          <div className="absolute left-4 md:left-1/2 h-full w-[2px] bg-gradient-to-b from-[color-mix(in_srgb,var(--accent-400)_70%,transparent)] to-[color-mix(in_srgb,var(--brand-600)_70%,transparent)] -z-10" />
           <div className="grid md:grid-cols-2 gap-8">
             {milestones.map((m, i) => (
               <motion.div

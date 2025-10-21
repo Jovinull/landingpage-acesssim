@@ -42,17 +42,14 @@ export default function Navbar() {
               href={item.href}
               className={`px-3 py-2 rounded-xl text-sm transition ${
                 active === item.href
-                  ? "bg-[var(--brand-50)] text-[var(--brand-700)] dark:bg-white/10 dark:text-white"
+                  ? "bg-[var(--brand-50)] text-[var(--brand-800)] dark:bg-white/10 dark:text-white"
                   : "hover:bg-black/5 dark:hover:bg-white/10"
               }`}
             >
               {item.name}
             </a>
           ))}
-          <a
-            href="#contato"
-            className="ml-2 px-4 py-2 rounded-2xl bg-[var(--brand-600)] text-white shadow-[0_10px_40px_rgba(32,153,255,0.35)] hover:shadow-[0_12px_44px_rgba(32,153,255,0.45)]"
-          >
+          <a href="#contato" className="ml-2 btn-primary">
             Fale com a gente
           </a>
         </div>
@@ -79,11 +76,7 @@ export default function Navbar() {
                 {item.name}
               </a>
             ))}
-            <a
-              href="#contato"
-              className="mt-2 px-4 py-2 rounded-2xl bg-[var(--brand-600)] text-white text-center shadow-[0_10px_40px_rgba(32,153,255,0.35)] hover:shadow-[0_12px_44px_rgba(32,153,255,0.45)]"
-              onClick={() => setOpen(false)}
-            >
+            <a href="#contato" className="mt-2 text-center btn-primary" onClick={() => setOpen(false)}>
               Fale com a gente
             </a>
           </div>

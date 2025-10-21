@@ -5,8 +5,8 @@
 <circle cx="128" cy="112" r="14" fill="white"/>
 <defs>
 <linearGradient id="g" x1="0" y1="0" x2="256" y2="256" gradientUnits="userSpaceOnUse">
-<stop stop-color="#2099FF"/>
-<stop offset="1" stop-color="#0F77E6"/>
+<stop stop-color="#FF6122"/>
+<stop offset="1" stop-color="#0096E6"/>
 </linearGradient>
 </defs>
 </svg>
