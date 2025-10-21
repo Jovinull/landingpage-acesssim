@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "AcessSim — Inovação aprovada no Catalisa (Sebrae)",
-  description: "Landing page profissional para a startup AcessSim, aprovada no Catalisa do Sebrae.",
+  title: "AccessSim — Inovação aprovada no Catalisa (Sebrae)",
+  description: "Landing page profissional para a startup AccessSim, aprovada no Catalisa do Sebrae.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 

@@ -32,8 +32,8 @@ export default function Navbar() {
     <header className={`sticky top-0 z-50 transition-all ${scrolled ? "backdrop-blur bg-white/60 dark:bg-black/30 border-b border-black/10 dark:border-white/10" : ""}`}>
       <nav className="container-x flex items-center justify-between py-3">
         <a href="#" className="flex items-center gap-2">
-          <img src="/logo.svg" alt="AcessSim" className="h-8 w-8" />
-          <span className="font-bold">AcessSim</span>
+          <img src="/logo.svg" alt="AccessSim" className="h-8 w-8" />
+          <span className="font-bold">AccessSim</span>
         </a>
         <div className="hidden md:flex items-center gap-2">
           {navItems.map((item) => (
