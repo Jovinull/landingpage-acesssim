@@ -12,7 +12,7 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="space-y-6"
         >
-          <span className="badge">✅ Aprovada no Catalisa Sebrae</span>
+          <span className="badge !text-white">Aprovada no Catalisa Sebrae</span>
           <h1 className="text-4xl md:text-6xl font-bold leading-tight">
             <span className="text-gradient">[TÍTULO FORTE DA SUA STARTUP]</span>
           </h1>

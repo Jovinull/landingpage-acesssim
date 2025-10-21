@@ -2,10 +2,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Dark moderno por padrão (não-preto) */
+  --background: #0e1320;
+  /* navy profundo */
+  --foreground: #eaf1f7;
+  /* texto confortável no dark */
 
-  /* COOL (primary) — cyan/blue from the logo */
+  /* superfícies (cards/sections) */
+  --surface-1: #0f1726;
+  /* card base */
+  --surface-2: #121c2e;
+  /* card hover / destaque leve */
+  --surface-3: #0b1422;
+  /* barras / footers */
+  --border-soft: rgba(255, 255, 255, 0.06);
+
+  /* COOL (primary) — cyan/blue da logo (mantidos) */
   --brand-50: #ecfbff;
   --brand-100: #d4f5ff;
   --brand-200: #a7e8ff;
@@ -17,7 +29,7 @@
   --brand-800: #0a5f90;
   --brand-900: #0b3c70;
 
-  /* WARM (accent) — orange/red from the logo */
+  /* WARM (accent) — laranja da logo (mantidos) */
   --accent-50: #fff3e8;
   --accent-100: #ffe3cc;
   --accent-200: #ffc199;
@@ -29,7 +41,7 @@
   --accent-800: #9e300d;
   --accent-900: #7c260a;
 
-  --muted: #6b7280;
+  --muted: #9ca3af;
 }
 
 @theme inline {
@@ -41,10 +53,41 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* mantém o dark moderno não-preto */
+    --background: #0e1320;
+    --foreground: #eaf1f7;
     --muted: #9ca3af;
   }
+}
+
+/* Superfície padrão para cards/sections */
+.surface {
+  background: linear-gradient(180deg,
+      color-mix(in srgb, var(--surface-1) 92%, transparent),
+      color-mix(in srgb, var(--surface-2) 92%, transparent));
+  border: 1px solid var(--border-soft);
+  border-radius: 1rem;
+  backdrop-filter: saturate(115%) blur(6px);
+}
+
+/* Versão “flat” (sem blur), útil para containers grandes */
+.surface-flat {
+  background: linear-gradient(180deg, var(--surface-1), var(--surface-2));
+  border: 1px solid var(--border-soft);
+  border-radius: 1rem;
+}
+
+/* Separador sutil que não “quebra” o fundo */
+.section-sep {
+  height: 1px;
+  width: 100%;
+  border: 0;
+  background:
+    linear-gradient(90deg,
+      transparent,
+      color-mix(in srgb, var(--foreground) 12%, transparent),
+      transparent);
+  opacity: .6;
 }
 
 html,
@@ -53,10 +96,28 @@ body {
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   scroll-behavior: smooth;
+  background-color: var(--background);
+  /* fallback sólido */
+}
+
+/* Fundo global fixo — evita “degrau” entre seções */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 600px at 10% -10%,
+      color-mix(in srgb, var(--brand-700) 18%, transparent), transparent 60%),
+    radial-gradient(1000px 500px at 110% 10%,
+      color-mix(in srgb, var(--accent-600) 12%, transparent), transparent 60%),
+    linear-gradient(180deg, #10172a 0%, #0e1526 28%, #0c1222 60%, #0b1120 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* Utilities */
@@ -91,14 +152,14 @@ body {
 .btn-primary {
   background: linear-gradient(90deg, var(--accent-500), var(--brand-600));
   color: white;
-  box-shadow: 0 10px 40px rgba(32, 153, 255, 0.35);
+  box-shadow: 0 12px 42px rgba(8, 176, 255, 0.28);
   border-radius: 1rem;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 12px 44px rgba(32, 153, 255, 0.45);
+  box-shadow: 0 14px 48px rgba(8, 176, 255, 0.38);
 }
 
 /* Subtle badge */
@@ -126,4 +187,12 @@ body {
 
 *::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* Garante que seções não sobrescrevem o pano de fundo */
+main,
+section,
+header,
+footer {
+  background: transparent !important;
 }
