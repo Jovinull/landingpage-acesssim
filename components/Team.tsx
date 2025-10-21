@@ -22,7 +22,7 @@ export default function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="rounded-2xl border border-black/10 dark:border-white/10 p-6 bg-white/70 dark:bg-black/40 backdrop-blur shadow-soft"
+              className="rounded-2xl border border-black/10 dark:border-white/10 p-6 bg-white/70 dark:bg-black/40 backdrop-blur shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
             >
               <div className="aspect-square rounded-xl border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/10 mb-4 overflow-hidden grid place-items-center">
                 <span className="text-xs text-gray-500">[Foto]</span>

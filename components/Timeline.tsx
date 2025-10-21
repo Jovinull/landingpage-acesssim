@@ -17,7 +17,7 @@ export default function Timeline() {
           [Missão, visão e proposta central. Público atendido e impacto esperado.]
         </p>
         <div className="relative">
-          <div className="absolute left-4 md:left-1/2 h-full w-[2px] bg-gradient-to-b from-brand-400/70 to-brand-600/70 -z-10" />
+          <div className="absolute left-4 md:left-1/2 h-full w-[2px] bg-gradient-to-b from-[color-mix(in_srgb,var(--brand-400)_70%,transparent)] to-[color-mix(in_srgb,var(--brand-600)_70%,transparent)] -z-10" />
           <div className="grid md:grid-cols-2 gap-8">
             {milestones.map((m, i) => (
               <motion.div
@@ -26,7 +26,7 @@ export default function Timeline() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className={`rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-black/40 backdrop-blur p-6 shadow-soft ${i % 2 === 0 ? "" : "md:translate-y-12"}`}
+                className={`rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-black/40 backdrop-blur p-6 shadow-[0_8px_30px_rgba(0,0,0,0.08)] ${i % 2 === 0 ? "" : "md:translate-y-12"}`}
               >
                 <div className="text-xs text-gray-500">{m.date}</div>
                 <h3 className="font-semibold text-lg">{m.title}</h3>

@@ -11,8 +11,9 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 8);
-      // Find the most visible section (basic scrollspy)
-      const sections = navItems.map(n => document.querySelector(n.href) as HTMLElement).filter(Boolean);
+      const sections = navItems
+        .map(n => document.querySelector(n.href) as HTMLElement)
+        .filter(Boolean);
       let current = "#inicio";
       let minDist = Infinity;
       sections.forEach((sec) => {
@@ -39,17 +40,28 @@ export default function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className={`px-3 py-2 rounded-xl text-sm transition ${active === item.href ? "bg-brand-50 text-brand-700 dark:bg-white/10 dark:text-white" : "hover:bg-black/5 dark:hover:bg-white/10"}`}
+              className={`px-3 py-2 rounded-xl text-sm transition ${
+                active === item.href
+                  ? "bg-[var(--brand-50)] text-[var(--brand-700)] dark:bg-white/10 dark:text-white"
+                  : "hover:bg-black/5 dark:hover:bg-white/10"
+              }`}
             >
               {item.name}
             </a>
           ))}
-          <a href="#contato" className="ml-2 px-4 py-2 rounded-2xl bg-brand-600 text-white hover:shadow-glow">
+          <a
+            href="#contato"
+            className="ml-2 px-4 py-2 rounded-2xl bg-[var(--brand-600)] text-white shadow-[0_10px_40px_rgba(32,153,255,0.35)] hover:shadow-[0_12px_44px_rgba(32,153,255,0.45)]"
+          >
             Fale com a gente
           </a>
         </div>
 
-        <button className="md:hidden p-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10" onClick={() => setOpen(!open)} aria-label="Abrir menu">
+        <button
+          className="md:hidden p-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10"
+          onClick={() => setOpen(!open)}
+          aria-label="Abrir menu"
+        >
           {open ? <X /> : <Menu />}
         </button>
       </nav>
@@ -58,11 +70,20 @@ export default function Navbar() {
         <div className="md:hidden border-t border-black/10 dark:border-white/10 bg-white/80 dark:bg-black/40 backdrop-blur">
           <div className="container-x py-3 flex flex-col">
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="px-3 py-2 rounded-xl text-sm hover:bg-black/5 dark:hover:bg-white/10" onClick={() => setOpen(false)}>
+              <a
+                key={item.href}
+                href={item.href}
+                className="px-3 py-2 rounded-xl text-sm hover:bg-black/5 dark:hover:bg-white/10"
+                onClick={() => setOpen(false)}
+              >
                 {item.name}
               </a>
             ))}
-            <a href="#contato" className="mt-2 px-4 py-2 rounded-2xl bg-brand-600 text-white text-center hover:shadow-glow" onClick={() => setOpen(false)}>
+            <a
+              href="#contato"
+              className="mt-2 px-4 py-2 rounded-2xl bg-[var(--brand-600)] text-white text-center shadow-[0_10px_40px_rgba(32,153,255,0.35)] hover:shadow-[0_12px_44px_rgba(32,153,255,0.45)]"
+              onClick={() => setOpen(false)}
+            >
               Fale com a gente
             </a>
           </div>
