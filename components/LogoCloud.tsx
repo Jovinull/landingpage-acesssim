@@ -1,47 +1,40 @@
-"use client";
+import Reveal from "@/components/ui/Reveal";
 
-type Partner = {
-  name: string;
-  subtitle?: string;
-  img?: string;
-};
+type Partner = { name: string; src?: string; className?: string };
 
 const partners: Partner[] = [
-  { name: "LABIC (IFS)", subtitle: "Laboratório de Inovação e Criatividade", img: "/logos/labic.svg" },
-  { name: "Instituto Federal de Sergipe", subtitle: "Campus Lagarto", img: "/logos/ifs.svg" },
-  { name: "Catalisa (Sebrae)", subtitle: "Programa de Aceleração", img: "/logos/sebrae.svg" },
+  { name: "Instituto Federal de Sergipe", src: "/logos/ifs.svg", className: "h-9" },
+  { name: "LABIC · IFS" },
+  { name: "Sebrae", src: "/logos/sebrae.svg", className: "h-8" },
+  { name: "Catalisa ICT", src: "/logos/catalisa-ict.png", className: "h-6" },
+  { name: "Programa Centelha", src: "/logos/centelha.png", className: "h-10" },
+  { name: "FAPITEC/SE", src: "/logos/fapitec.png", className: "h-9" },
+  { name: "CNPq", src: "/logos/cnpq.png", className: "h-8" },
 ];
 
 export default function LogoCloud() {
   return (
-    <section className="py-10">
-      <div className="container-x">
-        <div className="text-center text-sm text-gray-500 mb-6">Parcerias e reconhecimentos</div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 place-items-center">
+    <section className="py-20 sm:py-24">
+      <Reveal className="container-x">
+        <p className="text-center text-xs uppercase tracking-[0.16em] text-zinc-500">Apoio e reconhecimento</p>
+        <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-14">
           {partners.map((p) => (
-            <div
-              key={p.name}
-              className="w-full max-w-[280px] h-16 rounded-xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-black/30 backdrop-blur flex items-center justify-center px-4"
-              aria-label={p.name}
-              title={p.name}
-            >
-              {p.img ? (
+            <li key={p.name} title={p.name} className="flex items-center">
+              {p.src ? (
                 <img
-                  src={p.img}
+                  src={p.src}
                   alt={p.name}
-                  className="max-h-8 object-contain opacity-80 grayscale hover:grayscale-0 transition"
+                  className={`w-auto brightness-0 invert opacity-50 transition-opacity duration-300 hover:opacity-100 ${p.className}`}
                 />
               ) : (
-                <div className="text-center">
-                  <div className="text-sm font-medium">{p.name}</div>
-                  {p.subtitle && <div className="text-xs text-gray-500 dark:text-gray-400">{p.subtitle}</div>}
-                </div>
+                <span className="text-lg font-bold tracking-tight text-white opacity-50 transition-opacity hover:opacity-100">
+                  {p.name}
+                </span>
               )}
-            </div>
+            </li>
           ))}
-        </div>
-      </div>
+        </ul>
+      </Reveal>
     </section>
   );
 }

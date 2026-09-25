@@ -1,7 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import { navItems } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { navItems } from "@/lib/utils";
+import Logo from "@/components/ui/Logo";
+
+const desktopItems = navItems.filter((i) => i.href !== "#inicio" && i.href !== "#contato");
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -11,77 +15,87 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 8);
-      const sections = navItems
-        .map(n => document.querySelector(n.href) as HTMLElement)
-        .filter(Boolean);
+      // seção ativa = última cujo topo já passou da navbar
       let current = "#inicio";
-      let minDist = Infinity;
-      sections.forEach((sec) => {
-        const rect = sec.getBoundingClientRect();
-        const dist = Math.abs(rect.top - 120);
-        if (dist < minDist) { minDist = dist; current = "#" + sec.id; }
-      });
+      for (const item of navItems) {
+        const el = document.querySelector<HTMLElement>(item.href);
+        if (el && el.getBoundingClientRect().top <= 120) current = item.href;
+      }
       setActive(current);
     };
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all ${scrolled ? "backdrop-blur bg-white/60 dark:bg-black/30 border-b border-black/10 dark:border-white/10" : ""}`}>
-      <nav className="container-x flex items-center justify-between py-3">
-        <a href="#" className="flex items-center gap-2">
-          <img src="/logo.svg" alt="AccessSim" className="h-8 w-8" />
-          <span className="font-bold">AccessSim</span>
+    <header
+      className={`sticky top-0 z-50 transition-colors duration-300 ${
+        scrolled || open ? "border-b border-white/[0.06] bg-ink-950/75 backdrop-blur-xl" : "border-b border-transparent"
+      }`}
+    >
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+        <a href="#inicio" aria-label="AccessSim — início">
+          <Logo />
         </a>
-        <div className="hidden md:flex items-center gap-2">
-          {navItems.map((item) => (
+
+        <div className="hidden items-center gap-0.5 xl:flex">
+          {desktopItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className={`px-3 py-2 rounded-xl text-sm transition ${
-                active === item.href
-                  ? "bg-[var(--brand-50)] text-[var(--brand-800)] dark:bg-white/10 dark:text-white"
-                  : "hover:bg-black/5 dark:hover:bg-white/10"
+              className={`rounded-full px-3 py-1.5 text-[13px] whitespace-nowrap transition-colors ${
+                active === item.href ? "bg-white/[0.06] text-white" : "text-zinc-400 hover:text-white"
               }`}
             >
               {item.name}
             </a>
           ))}
-          <a href="#contato" className="ml-2 btn-primary">
-            Fale com a gente
+        </div>
+
+        <div className="hidden items-center gap-2 xl:flex">
+          <a href="#contato" className="btn-primary !h-9 !px-4 !text-[13px]">
+            Solicitar demonstração
           </a>
         </div>
 
         <button
-          className="md:hidden p-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10"
+          className="-mr-2 rounded-lg p-2 text-zinc-300 hover:bg-white/5 xl:hidden"
           onClick={() => setOpen(!open)}
-          aria-label="Abrir menu"
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={open}
         >
-          {open ? <X /> : <Menu />}
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
-      {open && (
-        <div className="md:hidden border-t border-black/10 dark:border-white/10 bg-white/80 dark:bg-black/40 backdrop-blur">
-          <div className="container-x py-3 flex flex-col">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="px-3 py-2 rounded-xl text-sm hover:bg-black/5 dark:hover:bg-white/10"
-                onClick={() => setOpen(false)}
-              >
-                {item.name}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden xl:hidden"
+          >
+            <div className="mx-auto flex max-w-7xl flex-col px-4 pb-5 sm:px-6">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="border-b border-white/[0.06] py-3 text-sm text-zinc-300 hover:text-white"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.name}
+                </a>
+              ))}
+              <a href="#contato" className="btn-primary mt-4" onClick={() => setOpen(false)}>
+                Solicitar demonstração
               </a>
-            ))}
-            <a href="#contato" className="mt-2 text-center btn-primary" onClick={() => setOpen(false)}>
-              Fale com a gente
-            </a>
-          </div>
-        </div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

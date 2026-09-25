@@ -1,59 +1,88 @@
 "use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, FileImage, Ruler, FlaskConical } from "lucide-react";
+import PlanMockup from "@/components/PlanMockup";
+
+const highlights = [
+  { icon: FileImage, label: "Plantas em PNG e JPEG" },
+  { icon: Ruler, label: "Critérios da ABNT NBR 9050" },
+  { icon: FlaskConical, label: "Protótipo funcional em validação" },
+];
 
 export default function Hero() {
+  const reduce = useReducedMotion();
+  const fade = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 16 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] as const },
+        };
+
   return (
-    <section id="inicio" className="relative overflow-hidden">
-      <div className="container-x py-20 md:py-28 grid md:grid-cols-2 items-center gap-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
+    <section id="inicio" className="relative isolate pt-16 sm:pt-24">
+      {/* fundo: grade de planta + brilho */}
+      <div className="bg-blueprint mask-radial pointer-events-none absolute inset-x-0 -top-16 -z-10 h-[820px]" />
+      <div className="pointer-events-none absolute left-1/2 top-40 -z-10 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-brand-500/15 blur-[120px]" />
+
+      <div className="container-x text-center">
+        <motion.a
+          {...fade(0)}
+          href="#conquistas"
+          className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] py-1 pl-1 pr-3 text-xs text-zinc-300 transition hover:border-white/20"
         >
-          <span className="badge !text-white">Aprovada no Catalisa Sebrae</span>
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            <span className="text-gradient">AccessSim</span>
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            Plataforma para avaliação de acessibilidade com IA
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <a href="#contato" className="btn-primary">Quero falar com o time</a>
-            <a href="#solucao" className="px-6 py-3 rounded-2xl border border-black/10 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10">Ver como funciona</a>
-          </div>
-          <div className="text-xs text-gray-500">
-            * Programa Catalisa Sebrae: inovação e aceleração de negócios — orgulhosamente aprovados.
-          </div>
+          <span className="rounded-full bg-accent-500/15 px-2 py-0.5 font-medium text-accent-300">Catalisa ICT + Centelha</span>
+          Aprovada em programas nacionais de inovação
+          <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+        </motion.a>
+
+        <motion.h1
+          {...fade(0.08)}
+          className="mx-auto mt-7 max-w-4xl text-4xl font-semibold tracking-tight text-white text-balance sm:text-6xl md:text-7xl md:leading-[1.02]"
+        >
+          Analise a acessibilidade do seu projeto com <span className="text-gradient">Inteligência Artificial</span>
+        </motion.h1>
+
+        <motion.p
+          {...fade(0.16)}
+          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-400 text-pretty sm:text-lg"
+        >
+          A AccessSim utiliza Inteligência Artificial para analisar plantas arquitetônicas e auxiliar na identificação
+          de possíveis não conformidades relacionadas à acessibilidade, com base nos critérios da NBR 9050.
+        </motion.p>
+
+        <motion.div {...fade(0.24)} className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="#sobre" className="btn-primary">
+            Conheça a AccessSim
+            <ArrowRight className="h-4 w-4" />
+          </a>
+          <a href="#contato" className="btn-secondary">
+            Fale com nosso time
+          </a>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative"
+        <motion.ul
+          {...fade(0.32)}
+          className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3 text-[13px] text-zinc-500"
         >
-          <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
-            <Image
-              src="/mockup.jpeg"   // ajuste o caminho conforme seu arquivo em /public
-              alt="Mockup do produto accessSim"
-              fill
-              className="object-cover"           // use "object-contain" se quiser mostrar 100% da imagem sem crop
-              sizes="(min-width:1280px) 640px, (min-width:768px) 50vw, 100vw"
-              priority={true}
-            />
-            {/* opcional: véu sutil pra casar com a paleta */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[color-mix(in_srgb,var(--accent-400)_10%,transparent)] to-[color-mix(in_srgb,var(--brand-600)_10%,transparent)]" />
-          </div>
-          <div className="absolute -bottom-6 -right-6 p-4 rounded-2xl bg-white/80 dark:bg-black/50 backdrop-blur border border-black/10 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
-            <div className="text-xs text-white-500">Destaque</div>
-            <div className="font-semibold">Acessibilidade / IA</div>
-          </div>
-        </motion.div>
+          {highlights.map((h) => (
+            <li key={h.label} className="inline-flex items-center gap-2">
+              <h.icon className="h-4 w-4 text-zinc-400" />
+              {h.label}
+            </li>
+          ))}
+        </motion.ul>
       </div>
+
+      <motion.div
+        initial={reduce ? false : { opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
+        className="container-x mt-16 sm:mt-20"
+      >
+        <PlanMockup />
+      </motion.div>
     </section>
   );
 }
