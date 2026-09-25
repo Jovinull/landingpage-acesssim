@@ -56,7 +56,7 @@ export default function PlanMockup() {
             <div className="bg-blueprint absolute inset-0 opacity-60" />
             <div className="relative">
               <svg viewBox="0 0 560 380" className="h-auto w-full" role="img" aria-label="Planta de um quarto com banheiro analisada pela AccessSim">
-                <g stroke="rgba(255,255,255,0.28)" strokeWidth="1.5" fill="rgba(255,255,255,0.02)">
+                <g className="fill-white/[0.02] stroke-white/30" strokeWidth="1.5">
                   {/* cama e criados */}
                   <rect x="110" y="26" width="130" height="160" rx="4" />
                   <rect x="120" y="36" width="52" height="22" rx="3" />
@@ -80,17 +80,17 @@ export default function PlanMockup() {
                 </g>
 
                 {/* paredes */}
-                <g stroke="rgba(255,255,255,0.8)" strokeWidth="6" strokeLinecap="square" fill="none">
+                <g className="stroke-white/80" strokeWidth="6" strokeLinecap="square" fill="none">
                   <path d="M20 20 H540 V360 H480 M420 360 H20 V240 M20 120 V20" />
                   <path d="M360 20 V200 H380 M422 200 H540" />
                 </g>
                 {/* janela */}
-                <g stroke="rgba(255,255,255,0.5)" strokeWidth="1.5">
+                <g className="stroke-white/50" strokeWidth="1.5">
                   <line x1="16" y1="120" x2="16" y2="240" />
                   <line x1="24" y1="120" x2="24" y2="240" />
                 </g>
                 {/* portas */}
-                <g stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" fill="none">
+                <g className="stroke-white/45" strokeWidth="1.5" fill="none">
                   <path d="M380 200 V242" />
                   <path d="M380 242 A42 42 0 0 0 422 200" strokeDasharray="3 4" />
                   <path d="M480 360 V300" />
@@ -130,7 +130,7 @@ export default function PlanMockup() {
                   </motion.g>
                 ))}
 
-                <text x="290" y="376" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.3)" fontFamily="var(--font-geist-mono)">
+                <text x="290" y="376" textAnchor="middle" fontSize="9" className="fill-white/30" fontFamily="var(--font-geist-mono)">
                   QUARTO + BANHEIRO · ESC 1:50
                 </text>
               </svg>

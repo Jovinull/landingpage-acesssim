@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* dark: via classe .dark no <html> (next-themes) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-ink-950: #05070a;
   --color-ink-900: #0a0d12;
@@ -23,7 +26,42 @@
 }
 
 :root {
+  color-scheme: light;
+}
+
+.dark {
   color-scheme: dark;
+}
+
+/*
+ * O design foi desenhado no escuro (texto "white" sobre fundo "ink").
+ * No modo claro, invertemos a paleta: white vira quase-preto, ink vira branco,
+ * a escala zinc se inverte e os tons claros de marca escurecem para manter contraste.
+ */
+html:not(.dark) {
+  --color-white: #0b0d12;
+  --color-zinc-100: #18181b;
+  --color-zinc-200: #27272a;
+  --color-zinc-300: #3f3f46;
+  --color-zinc-400: #52525b;
+  --color-zinc-500: #6b6b74;
+  --color-zinc-600: #85858e;
+  --color-zinc-700: #d4d4d8;
+
+  --color-ink-950: #ffffff;
+  --color-ink-900: #f6f7f9;
+  --color-ink-800: #eef0f3;
+  --color-ink-700: #e4e7ec;
+
+  --color-brand-200: #075985;
+  --color-brand-300: #0369a1;
+  --color-brand-400: #0284c7;
+
+  --color-accent-300: #c2410c;
+  --color-accent-400: #ea580c;
+
+  --color-emerald-300: #047857;
+  --color-emerald-400: #059669;
 }
 
 html {
@@ -32,7 +70,7 @@ html {
 
 body {
   background-color: var(--color-ink-950);
-  color: #e4e4e7;
+  color: var(--color-zinc-200);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -75,7 +113,7 @@ section[id] {
   }
 
   .text-gradient {
-    background: linear-gradient(100deg, #ffffff 10%, var(--color-brand-300) 55%, var(--color-brand-500));
+    background: linear-gradient(100deg, var(--color-white) 10%, var(--color-brand-300) 55%, var(--color-brand-500));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -84,8 +122,8 @@ section[id] {
   /* grade de "planta" usada nos fundos */
   .bg-blueprint {
     background-image:
-      linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+      linear-gradient(to right, color-mix(in srgb, var(--color-white) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-white) 5%, transparent) 1px, transparent 1px);
     background-size: 56px 56px;
   }
 

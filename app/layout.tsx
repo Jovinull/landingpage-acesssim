@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { ReactNode } from "react";
+import ThemeProvider from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.accesssim.com.br"),
@@ -25,7 +26,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
-      <body className="min-h-dvh">{children}</body>
+      <body className="min-h-dvh">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

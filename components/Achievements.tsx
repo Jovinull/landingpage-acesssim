@@ -67,7 +67,7 @@ const programs: Program[] = [
     ],
     href: "https://programacentelha.com.br/se/",
     visual: (
-      <div className="bg-blueprint relative flex aspect-[16/3] w-full items-center justify-center bg-ink-950">
+      <div className="relative flex aspect-[16/3] w-full items-center justify-center bg-[#05070a]">
         <img src="/logos/centelha.png" alt="Programa Centelha" className="h-12 w-auto sm:h-14" />
       </div>
     ),

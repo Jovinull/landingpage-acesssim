@@ -24,7 +24,7 @@ export default function LogoCloud() {
                 <img
                   src={p.src}
                   alt={p.name}
-                  className={`w-auto brightness-0 invert opacity-50 transition-opacity duration-300 hover:opacity-100 ${p.className}`}
+                  className={`w-auto brightness-0 opacity-50 dark:invert transition-opacity duration-300 hover:opacity-100 ${p.className}`}
                 />
               ) : (
                 <span className="text-lg font-bold tracking-tight text-white opacity-50 transition-opacity hover:opacity-100">

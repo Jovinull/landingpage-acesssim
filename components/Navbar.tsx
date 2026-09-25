@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navItems } from "@/lib/utils";
 import Logo from "@/components/ui/Logo";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const desktopItems = navItems.filter((i) => i.href !== "#inicio" && i.href !== "#contato");
 
@@ -54,19 +55,23 @@ export default function Navbar() {
         </div>
 
         <div className="hidden items-center gap-2 xl:flex">
+          <ThemeToggle />
           <a href="#contato" className="btn-primary !h-9 !px-4 !text-[13px]">
             Solicitar demonstração
           </a>
         </div>
 
-        <button
-          className="-mr-2 rounded-lg p-2 text-zinc-300 hover:bg-white/5 xl:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={open}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-1 xl:hidden">
+          <ThemeToggle />
+          <button
+            className="-mr-2 rounded-lg p-2 text-zinc-300 hover:bg-white/5"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={open}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
