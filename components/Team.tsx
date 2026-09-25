@@ -13,21 +13,21 @@ type Person = {
 const founders: Person[] = [
   {
     name: "Allany Clara",
-    role: "Arquitetura e Urbanismo",
-    bio: "Atua na interface entre arquitetura, acessibilidade e tecnologia, contribuindo para a definição dos critérios arquitetônicos e aplicação da NBR 9050 na solução.",
+    role: "Arquitetura, Acessibilidade e Negócios",
+    bio: "Atua na interface entre arquitetura, acessibilidade e tecnologia, definindo os critérios arquitetônicos e a aplicação da NBR 9050 na solução. Também conduz o relacionamento comercial da AccessSim.",
     img: "/allany-clara.jpeg",
   },
   {
     name: "Felipe Jovino",
-    role: "Desenvolvimento Full-Stack e Inteligência Artificial",
-    bio: "Responsável pelo desenvolvimento tecnológico da plataforma, atuando com desenvolvimento full-stack, Inteligência Artificial e estruturação dos sistemas que compõem a solução.",
+    role: "Líder Técnico · Full-Stack e IA",
+    bio: "Lidera o desenvolvimento tecnológico da plataforma, atuando com desenvolvimento full-stack, Inteligência Artificial e na arquitetura dos sistemas que compõem a solução.",
     img: "/felipe-jovino.jpeg",
     cert: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
   },
   {
     name: "Benicio Barbosa",
-    role: "Tecnologia e Sistemas",
-    bio: "Atua na área de tecnologia e pesquisa aplicada, contribuindo para o desenvolvimento e integração de soluções tecnológicas.",
+    role: "Coordenação Geral · Tecnologia e Sistemas",
+    bio: "Coordena a AccessSim e atua em tecnologia e pesquisa aplicada, contribuindo para o desenvolvimento e a integração das soluções tecnológicas, com experiência em eletrônica e sistemas embarcados.",
     img: "/bernicio-barbosa.jpeg",
   },
 ];
@@ -35,8 +35,8 @@ const founders: Person[] = [
 const interns: Person[] = [
   {
     name: "Ramon Oliveira",
-    role: "Estagiário",
-    bio: "Cursando Sistemas de Informação. Atua na área de TI da startup, com foco em backend Java.",
+    role: "Estagiário · Desenvolvimento Backend",
+    bio: "Cursando Sistemas de Informação. Atua no desenvolvimento de software da AccessSim, com foco em backend Java.",
     img: "/ramon-oliveira.jpeg",
   },
   {

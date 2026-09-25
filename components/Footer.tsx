@@ -62,7 +62,7 @@ export default function Footer() {
       <div className="border-t border-white/[0.06]">
         <div className="container-x flex flex-col gap-2 py-6 text-xs text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} AccessSim. Todos os direitos reservados.</span>
-          <span>Aprovada no Catalisa ICT (Sebrae) e no Centelha 3 Sergipe</span>
+          <span>Aprovada no Catalisa ICT (Sebrae) e no Programa Centelha</span>
         </div>
       </div>
     </footer>

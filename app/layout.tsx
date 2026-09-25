@@ -5,6 +5,8 @@ import "./globals.css";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.accesssim.com.br"),
+  alternates: { canonical: "/" },
   title: "AccessSim — Acessibilidade inteligente para projetos mais inclusivos",
   description:
     "Plataforma inteligente que utiliza Inteligência Artificial para auxiliar na análise de acessibilidade em plantas arquitetônicas, com base nos critérios da NBR 9050.",
@@ -15,6 +17,7 @@ export const metadata: Metadata = {
     siteName: "AccessSim",
     locale: "pt_BR",
     type: "website",
+    url: "/",
   },
   twitter: { card: "summary_large_image" },
 };

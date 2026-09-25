@@ -5,9 +5,9 @@ import SectionHeading from "@/components/ui/SectionHeading";
 
 const stats = [
   { value: "R$ 120 mil", label: "em bolsas de estímulo à inovação", source: "Catalisa ICT" },
-  { value: "até R$ 130 mil", label: "em subvenção econômica e bolsas CNPq", source: "Centelha 3 SE" },
+  { value: "até R$ 130 mil", label: "em subvenção econômica e bolsas CNPq", source: "Programa Centelha" },
   { value: "316 de 858", label: "planos de inovação selecionados no Brasil", source: "Catalisa ICT" },
-  { value: "47 de 422", label: "ideias inovadoras aprovadas em Sergipe", source: "Centelha 3 SE" },
+  { value: "47 de 422", label: "ideias inovadoras aprovadas em Sergipe", source: "Programa Centelha" },
 ];
 
 type Stage = { label: string; detail: string; done: boolean };
@@ -19,16 +19,16 @@ type Program = {
   result: string;
   description: string[];
   benefits: string[];
-  stages: Stage[];
+  stages?: Stage[];
   href: string;
   visual: React.ReactNode;
 };
 
 const programs: Program[] = [
   {
-    name: "Catalisa ICT · Ciclo 02",
-    org: "Sebrae · com MCTI, CNPq, INPI e Confap",
-    status: "Aprovada na Etapa 2 — Validar",
+    name: "Catalisa ICT",
+    org: "Sebrae · Ciclo 02 · com MCTI, CNPq, INPI e Confap",
+    status: "Aprovada nas Etapas 1 e 2",
     result: "Resultado final em 25/08/2025",
     description: [
       "A AccessSim integra o programa Catalisa ICT, iniciativa do Sebrae voltada à transformação de pesquisas e tecnologias em negócios inovadores.",
@@ -52,23 +52,18 @@ const programs: Program[] = [
     ),
   },
   {
-    name: "Centelha 3 · Sergipe",
-    org: "FAPITEC/SE · Finep · MCTI · CNPq",
-    status: "Aprovada entre os 47 projetos",
+    name: "Programa Centelha",
+    org: "3ª edição · Sergipe · FAPITEC/SE, Finep, MCTI e CNPq",
+    status: "Aprovada no Programa Centelha",
     result: "Resultado final em 12/05/2026",
     description: [
       "Programa Nacional de Apoio à Geração de Empreendimentos Inovadores, que apoia a transformação de ideias em negócios de base tecnológica.",
-      "A AccessSim foi aprovada na classificação geral do Centelha 3 em Sergipe, na temática Tecnologia Social, entre 422 ideias inovadoras submetidas por empreendedores de 29 municípios.",
+      "A AccessSim foi aprovada entre os 47 projetos selecionados em Sergipe, na temática Tecnologia Social, entre 422 ideias inovadoras submetidas por empreendedores de 29 municípios.",
     ],
     benefits: [
       "Até R$ 80 mil em recursos de subvenção econômica",
       "Até R$ 50 mil em bolsas de apoio técnico do CNPq",
       "Capacitações e conexões estratégicas durante até 12 meses de execução",
-    ],
-    stages: [
-      { label: "Ideia inovadora", detail: "200 de 422 ideias", done: true },
-      { label: "Projeto de fomento", detail: "47 aprovados", done: true },
-      { label: "Execução", detail: "Até 12 meses", done: false },
     ],
     href: "https://programacentelha.com.br/se/",
     visual: (
@@ -133,6 +128,7 @@ export default function Achievements() {
                 </ul>
 
                 {/* etapas */}
+                {p.stages && (
                 <ol className="mt-8 grid grid-cols-3 gap-2">
                   {p.stages.map((s) => (
                     <li key={s.label}>
@@ -142,6 +138,7 @@ export default function Achievements() {
                     </li>
                   ))}
                 </ol>
+                )}
 
                 <div className="min-h-8 flex-1" />
                 <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/[0.06] pt-5 text-xs text-zinc-500">
@@ -161,8 +158,8 @@ export default function Achievements() {
         </div>
 
         <p className="mt-6 text-xs leading-relaxed text-zinc-600">
-          Valores conforme os editais do Catalisa ICT — Ciclo 02 (Sebrae) e do Programa Centelha 3 — Sergipe (Edital
-          FAPITEC/SE nº 21/2025).
+          Valores conforme os editais do Catalisa ICT — Ciclo 02 (Sebrae) e do Programa Centelha — 3ª edição em Sergipe
+          (Edital FAPITEC/SE nº 21/2025).
         </p>
       </div>
     </section>
