@@ -42,7 +42,7 @@ const programs: Program[] = [
     stages: [
       { label: "Mobilizar e Aprender", detail: "Capacitação", done: true },
       { label: "Validar", detail: "316 de 858 planos", done: true },
-      { label: "Inovar", detail: "Próxima etapa", done: false },
+      { label: "Inovar e Escalar", detail: "Próxima etapa", done: false },
     ],
     href: "https://sebrae.com.br/sites/PortalSebrae/catalisa/ictedital",
     visual: (
@@ -68,9 +68,33 @@ const programs: Program[] = [
     href: "https://programacentelha.com.br/se/",
     visual: (
       <div className="relative flex aspect-[16/3] w-full items-center justify-center bg-[#05070a]">
-        <img src="/logos/centelha.png" alt="Programa Centelha" className="h-12 w-auto sm:h-14" />
+        <Image src="/logos/centelha.png" alt="Programa Centelha" width={645} height={258} sizes="160px" className="h-12 w-auto sm:h-14" />
       </div>
     ),
+  },
+];
+
+const press = [
+  {
+    source: "FAPITEC/SE",
+    date: "mai. 2026",
+    title: "Lista final dos 47 projetos aprovados no Programa Centelha 3 — Sergipe",
+    kind: "Resultado oficial (PDF)",
+    href: "https://drive.google.com/file/d/1yx4oLr9LqdjUDWeficW5ZI29it4nso_W/view",
+  },
+  {
+    source: "FAPITEC/SE",
+    date: "fev. 2026",
+    title: "Lista final das 200 ideias inovadoras aprovadas na Fase 1 do Centelha 3 — Sergipe",
+    kind: "Resultado oficial (PDF)",
+    href: "https://fapitec.se.gov.br/wp-content/uploads/2026/02/Lista-final-FASE-1-CENTELHA-SE-3.pdf",
+  },
+  {
+    source: "Programa Centelha",
+    date: "jul. 2026",
+    title: "Centelha Sergipe: confira os principais resultados da terceira edição do programa no estado",
+    kind: "Notícia",
+    href: "https://programacentelha.com.br/centelha-sergipe-confira-os-principais-resultados-da-terceira-edicao-do-programa-no-estado/",
   },
 ];
 
@@ -157,7 +181,34 @@ export default function Achievements() {
           ))}
         </div>
 
-        <p className="mt-6 text-xs leading-relaxed text-zinc-600">
+        {/* resultados oficiais em que a AccessSim aparece */}
+        <Reveal className="mt-10">
+          <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-zinc-500">Onde a AccessSim aparece</h3>
+          <ul className="mt-4 grid gap-3 md:grid-cols-3">
+            {press.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="card group flex h-full flex-col p-5 transition-colors hover:border-white/15"
+                >
+                  <span className="font-mono text-[11px] uppercase tracking-wider text-brand-300">
+                    {item.source} · {item.date}
+                  </span>
+                  <span className="mt-2 flex-1 text-sm leading-snug text-zinc-200 group-hover:text-white">{item.title}</span>
+                  <span className="mt-4 inline-flex items-center gap-1 text-xs text-zinc-500">
+                    {item.kind}
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    <span className="sr-only">(abre em nova aba)</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <p className="mt-6 text-xs leading-relaxed text-zinc-500">
           Valores conforme os editais do Catalisa ICT — Ciclo 02 (Sebrae) e do Programa Centelha — 3ª edição em Sergipe
           (Edital FAPITEC/SE nº 21/2025).
         </p>

@@ -44,7 +44,7 @@ function DetectionVisual() {
           style={{ left: b.l, top: b.t, width: b.w, height: b.h }}
         >
           <span
-            className={`absolute -top-2.5 left-2 rounded px-1.5 py-px font-mono text-[10px] text-ink-950 ${b.warn ? "bg-accent-400" : "bg-emerald-400"}`}
+            className={`absolute -top-2.5 left-2 rounded px-1.5 py-px font-mono text-[10px] text-[#05070a] ${b.warn ? "bg-accent-400" : "bg-emerald-400"}`}
           >
             {b.label}
           </span>

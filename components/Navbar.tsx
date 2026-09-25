@@ -8,7 +8,8 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 const desktopItems = navItems.filter((i) => i.href !== "#inicio" && i.href !== "#contato");
 
-export default function Navbar() {
+// base = "" na página inicial (âncoras locais) e "/" nas páginas internas
+export default function Navbar({ base = "" }: { base?: string }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("#inicio");
@@ -16,6 +17,7 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 8);
+      if (base) return;
       // seção ativa = última cujo topo já passou da navbar
       let current = "#inicio";
       for (const item of navItems) {
@@ -27,7 +29,7 @@ export default function Navbar() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [base]);
 
   return (
     <header
@@ -36,7 +38,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <a href="#inicio" aria-label="AccessSim — início">
+        <a href={base ? "/" : "#inicio"} aria-label="AccessSim — página inicial">
           <Logo />
         </a>
 
@@ -44,9 +46,10 @@ export default function Navbar() {
           {desktopItems.map((item) => (
             <a
               key={item.href}
-              href={item.href}
+              href={base + item.href}
+              aria-current={!base && active === item.href ? "true" : undefined}
               className={`rounded-full px-3 py-1.5 text-[13px] whitespace-nowrap transition-colors ${
-                active === item.href ? "bg-white/[0.06] text-white" : "text-zinc-400 hover:text-white"
+                !base && active === item.href ? "bg-white/[0.06] text-white" : "text-zinc-400 hover:text-white"
               }`}
             >
               {item.name}
@@ -56,7 +59,7 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-2 xl:flex">
           <ThemeToggle />
-          <a href="#contato" className="btn-primary !h-9 !px-4 !text-[13px]">
+          <a href={`${base}#contato`} className="btn-primary !h-9 !px-4 !text-[13px]">
             Solicitar demonstração
           </a>
         </div>
@@ -87,14 +90,14 @@ export default function Navbar() {
               {navItems.map((item) => (
                 <a
                   key={item.href}
-                  href={item.href}
+                  href={base + item.href}
                   className="border-b border-white/[0.06] py-3 text-sm text-zinc-300 hover:text-white"
                   onClick={() => setOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <a href="#contato" className="btn-primary mt-4" onClick={() => setOpen(false)}>
+              <a href={`${base}#contato`} className="btn-primary mt-4" onClick={() => setOpen(false)}>
                 Solicitar demonstração
               </a>
             </div>

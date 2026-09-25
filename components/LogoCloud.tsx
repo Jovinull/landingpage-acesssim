@@ -1,15 +1,16 @@
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 
-type Partner = { name: string; src?: string; className?: string };
+type Partner = { name: string; src?: string; w?: number; h?: number; className?: string };
 
 const partners: Partner[] = [
-  { name: "Instituto Federal de Sergipe", src: "/logos/ifs.svg", className: "h-9" },
+  { name: "Instituto Federal de Sergipe", src: "/logos/ifs.svg", w: 356, h: 104, className: "h-9" },
   { name: "LABIC · IFS" },
-  { name: "Sebrae", src: "/logos/sebrae.svg", className: "h-8" },
-  { name: "Catalisa ICT", src: "/logos/catalisa-ict.png", className: "h-6" },
-  { name: "Programa Centelha", src: "/logos/centelha.png", className: "h-10" },
-  { name: "FAPITEC/SE", src: "/logos/fapitec.png", className: "h-9" },
-  { name: "CNPq", src: "/logos/cnpq.png", className: "h-8" },
+  { name: "Sebrae", src: "/logos/sebrae.svg", w: 80, h: 39, className: "h-8" },
+  { name: "Catalisa ICT", src: "/logos/catalisa-ict.png", w: 250, h: 42, className: "h-6" },
+  { name: "Programa Centelha", src: "/logos/centelha.png", w: 645, h: 258, className: "h-10" },
+  { name: "FAPITEC/SE", src: "/logos/fapitec.png", w: 900, h: 241, className: "h-9" },
+  { name: "CNPq", src: "/logos/cnpq.png", w: 488, h: 150, className: "h-8" },
 ];
 
 export default function LogoCloud() {
@@ -21,13 +22,17 @@ export default function LogoCloud() {
           {partners.map((p) => (
             <li key={p.name} title={p.name} className="flex items-center">
               {p.src ? (
-                <img
+                <Image
                   src={p.src}
                   alt={p.name}
+                  width={p.w}
+                  height={p.h}
+                  sizes="160px"
+                  unoptimized={p.src.endsWith(".svg")}
                   className={`w-auto brightness-0 opacity-50 dark:invert transition-opacity duration-300 hover:opacity-100 ${p.className}`}
                 />
               ) : (
-                <span className="text-lg font-bold tracking-tight text-white opacity-50 transition-opacity hover:opacity-100">
+                <span className="text-lg font-bold tracking-tight text-zinc-500 transition-colors hover:text-white">
                   {p.name}
                 </span>
               )}

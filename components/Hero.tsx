@@ -38,7 +38,9 @@ export default function Hero() {
         </motion.a>
 
         <motion.h1
-          {...fade(0.08)}
+          initial={reduce ? false : { y: 12 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
           className="mx-auto mt-7 max-w-4xl text-4xl font-semibold tracking-tight text-white text-balance sm:text-6xl md:text-7xl md:leading-[1.02]"
         >
           Analise a acessibilidade do seu projeto com <span className="text-gradient">Inteligência Artificial</span>

@@ -1,4 +1,5 @@
-import { User, BadgeCheck } from "lucide-react";
+import { User, BadgeCheck, Linkedin } from "lucide-react";
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 
@@ -8,6 +9,7 @@ type Person = {
   bio?: string;
   img?: string;
   cert?: string;
+  linkedin?: string;
 };
 
 const founders: Person[] = [
@@ -22,6 +24,7 @@ const founders: Person[] = [
     role: "Líder Técnico · Full-Stack e IA",
     bio: "Lidera o desenvolvimento tecnológico da plataforma, atuando com desenvolvimento full-stack, Inteligência Artificial e na arquitetura dos sistemas que compõem a solução.",
     img: "/felipe-jovino.jpeg",
+    linkedin: "https://www.linkedin.com/in/felipe-jovino",
     cert: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
   },
   {
@@ -53,9 +56,28 @@ const alumni: Person[] = [
   },
 ];
 
-function Avatar({ p, className }: { p: Person; className: string }) {
+function LinkedinLink({ p, className = "" }: { p: Person; className?: string }) {
+  if (!p.linkedin) return null;
+  return (
+    <a
+      href={p.linkedin}
+      target="_blank"
+      rel="noreferrer noopener"
+      aria-label={`LinkedIn de ${p.name} (abre em nova aba)`}
+      className={`inline-flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-white ${className}`}
+    >
+      <Linkedin className="h-4 w-4" aria-hidden="true" />
+      LinkedIn
+    </a>
+  );
+}
+
+function Avatar({ p, className, size, sizes }: { p: Person; className: string; size?: number; sizes?: string }) {
+  if (p.img && size) {
+    return <Image src={p.img} alt={p.name} width={size} height={size} className={`object-cover ${className}`} />;
+  }
   return p.img ? (
-    <img src={p.img} alt={p.name} className={`object-cover ${className}`} />
+    <Image src={p.img} alt={p.name} fill sizes={sizes} className={`object-cover ${className}`} />
   ) : (
     <div role="img" aria-label={p.name} className={`flex items-center justify-center bg-white/[0.04] ${className}`}>
       <User className="h-1/2 w-1/2 text-zinc-600" strokeWidth={1.25} />
@@ -80,7 +102,8 @@ export default function Team() {
               <div className="relative aspect-square overflow-hidden sm:aspect-[4/5]">
                 <Avatar
                   p={p}
-                  className="h-full w-full grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
+                  sizes="(min-width: 1024px) 368px, (min-width: 640px) 50vw, 100vw"
+                  className="grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6">
@@ -92,10 +115,11 @@ export default function Team() {
                 <p className="text-sm leading-relaxed text-zinc-400">{p.bio}</p>
                 {p.cert && (
                   <p className="mt-4 flex items-start gap-2 text-xs text-zinc-500">
-                    <BadgeCheck className="h-4 w-4 shrink-0 text-brand-400" />
+                    <BadgeCheck className="h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
                     {p.cert}
                   </p>
                 )}
+                <LinkedinLink p={p} className="mt-4" />
               </div>
             </Reveal>
           ))}
@@ -107,11 +131,12 @@ export default function Team() {
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
             {interns.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.06} className="card flex items-center gap-5 p-5">
-                <Avatar p={p} className="h-16 w-16 shrink-0 rounded-full border border-white/10" />
+                <Avatar p={p} size={64} className="h-16 w-16 shrink-0 rounded-full border border-white/10" />
                 <div className="min-w-0">
                   <div className="font-medium text-white">{p.name}</div>
                   <div className="text-sm text-brand-300">{p.role}</div>
                   {p.bio && <p className="mt-1 text-sm leading-relaxed text-zinc-400">{p.bio}</p>}
+                  <LinkedinLink p={p} className="mt-2" />
                 </div>
               </Reveal>
             ))}
@@ -128,7 +153,7 @@ export default function Team() {
                 key={p.name}
                 className="flex items-center gap-3 rounded-full border border-white/[0.08] bg-white/[0.02] py-1.5 pl-1.5 pr-5"
               >
-                <Avatar p={p} className="h-9 w-9 rounded-full grayscale" />
+                <Avatar p={p} size={36} className="h-9 w-9 rounded-full grayscale" />
                 <div className="leading-tight">
                   <div className="text-sm text-zinc-300">{p.name}</div>
                   <div className="text-xs text-zinc-500">{p.role}</div>

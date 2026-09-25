@@ -1,4 +1,5 @@
 import { DoorOpen, MoveHorizontal, RotateCcw, GripHorizontal, Ruler, Accessibility, Route } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 
 const elements = [
@@ -41,6 +42,13 @@ export default function Nbr9050() {
                 <span className="text-xs text-zinc-500">ABNT</span>
                 <span className="text-2xl font-semibold tracking-tight text-white">NBR 9050</span>
               </div>
+              <a
+                href="/guia-nbr-9050"
+                className="mt-4 flex w-fit items-center gap-1 text-sm text-brand-300 underline-offset-4 hover:underline"
+              >
+                Veja o guia prático com as principais medidas da norma
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
             </Reveal>
 
             <div>

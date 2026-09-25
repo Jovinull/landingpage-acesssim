@@ -3,33 +3,8 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Plus, ArrowRight } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { faqs } from "@/lib/site";
 
-const faqs = [
-  {
-    q: "A AccessSim substitui a análise de um arquiteto?",
-    a: "Não. A AccessSim é uma ferramenta de apoio. A análise e a responsabilidade técnica pelo projeto continuam sendo do profissional habilitado.",
-  },
-  {
-    q: "A AccessSim verifica a NBR 9050?",
-    a: "A plataforma utiliza critérios relacionados à NBR 9050 para auxiliar na identificação de possíveis não conformidades em projetos arquitetônicos.",
-  },
-  {
-    q: "Preciso ter conhecimento de programação?",
-    a: "Não. A plataforma foi pensada para ser utilizada por profissionais da arquitetura, engenharia e áreas relacionadas.",
-  },
-  {
-    q: "Que tipo de arquivo posso enviar?",
-    a: "A solução trabalha com imagens de plantas arquitetônicas, como arquivos PNG e JPEG.",
-  },
-  {
-    q: "A AccessSim já está funcionando?",
-    a: "Sim. A AccessSim possui um protótipo funcional e está atualmente em fase de testes, aprimoramento e validação com profissionais.",
-  },
-  {
-    q: "A AccessSim fornece um laudo técnico?",
-    a: "A plataforma oferece informações para apoiar a análise do projeto. A emissão de documentos técnicos e a responsabilidade profissional devem ser realizadas pelo profissional habilitado.",
-  },
-];
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);

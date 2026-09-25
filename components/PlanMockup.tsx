@@ -167,7 +167,7 @@ export default function PlanMockup() {
                   className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3"
                 >
                   <span
-                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-semibold text-ink-950 ${
+                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-semibold text-[#05070a] ${
                       f.status === "warn" ? "bg-accent-400" : "bg-emerald-400"
                     }`}
                   >

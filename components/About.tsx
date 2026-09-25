@@ -1,5 +1,6 @@
 import { Gauge, LayoutList, Accessibility } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import Impact from "@/components/Impact";
 
 const problems = [
   "Demora na análise.",
@@ -23,9 +24,9 @@ export default function About() {
       <section id="sobre" className="py-20 sm:py-28">
         <div className="container-x">
           <Reveal>
-            <span className="eyebrow">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />O que é a AccessSim?
-            </span>
+            <h2 className="eyebrow">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-400" aria-hidden="true" />O que é a AccessSim?
+            </h2>
             <p className="mt-6 max-w-4xl text-2xl font-medium leading-snug tracking-tight text-zinc-500 text-pretty sm:text-3xl md:text-4xl md:leading-[1.25]">
               <span className="text-white">Uma plataforma de tecnologia voltada à análise de acessibilidade em projetos arquitetônicos.</span>{" "}
               A solução utiliza Inteligência Artificial para interpretar plantas e identificar elementos que podem
@@ -46,6 +47,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <Impact />
 
       {/* Problema */}
       <section className="py-20 sm:py-28">

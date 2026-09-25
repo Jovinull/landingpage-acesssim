@@ -1,25 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { plans } from "@/lib/site";
 
-const plans = [
-  {
-    name: "Básico",
-    price: "79,90",
-    desc: "Para profissionais que desejam utilizar a plataforma em projetos individuais.",
-  },
-  {
-    name: "Profissional",
-    price: "149,90",
-    desc: "Para profissionais que analisam maior volume de projetos.",
-    highlight: true,
-  },
-  {
-    name: "Corporativo",
-    price: "499,90",
-    desc: "Para escritórios, empresas e equipes que precisam utilizar a plataforma de forma compartilhada e em maior escala.",
-  },
-];
 
 export default function Pricing() {
   return (

@@ -13,12 +13,14 @@ import Team from "@/components/Team";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import StickyCTA from "@/components/StickyCTA";
+import { HomeJsonLd } from "@/components/JsonLd";
 
 export default function Page() {
   return (
     <>
       <Navbar />
-      <main className="overflow-x-clip">
+      <main id="conteudo" tabIndex={-1} className="overflow-x-clip outline-none">
         <Hero />
         <LogoCloud />
         <About />
@@ -34,6 +36,8 @@ export default function Page() {
         <CTA />
       </main>
       <Footer />
+      <StickyCTA />
+      <HomeJsonLd />
     </>
   );
 }

@@ -52,7 +52,7 @@ export default function Validation() {
               <div className="flex items-center gap-3">
                 {s.status === "done" && (
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400/15">
-                    <Check className="h-3.5 w-3.5 text-emerald-300" />
+                    <Check className="h-3.5 w-3.5 text-emerald-300" aria-hidden="true" />
                   </span>
                 )}
                 {s.status === "current" && (
@@ -72,27 +72,20 @@ export default function Validation() {
           ))}
         </ol>
 
-        {/* validação */}
-        <Reveal className="card mt-4 grid gap-10 p-6 sm:p-10 lg:grid-cols-[1fr_1.2fr]">
-          <div>
-            <span className="eyebrow">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
-              Validação
-            </span>
-            <h3 className="mt-4 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              Tecnologia desenvolvida com foco na aplicação real
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-zinc-400 sm:text-base">
-              A AccessSim está passando por uma etapa de testes e validação junto a profissionais da área de arquitetura
-              e engenharia. Os testes têm como objetivo avaliar a capacidade da plataforma de interpretar diferentes
-              tipos de projetos, identificar possíveis não conformidades e apresentar informações úteis para os
-              profissionais.
-            </p>
-          </div>
-          <ul className="grid content-start gap-x-6 sm:grid-cols-2">
+        {/* validação com profissionais */}
+        <Reveal className="card mt-4 p-6 sm:p-8">
+          <h3 className="font-medium text-white">Tecnologia desenvolvida com foco na aplicação real</h3>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-400">
+            Os testes com profissionais de arquitetura e engenharia avaliam a capacidade da plataforma de interpretar
+            diferentes tipos de projetos, identificar possíveis não conformidades e apresentar informações úteis.
+          </p>
+          <ul className="mt-5 flex flex-wrap gap-2" aria-label="Atividades da etapa de validação">
             {activities.map((a) => (
-              <li key={a} className="flex items-start gap-3 border-b border-white/[0.06] py-3.5 text-sm text-zinc-300">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" />
+              <li
+                key={a}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1.5 text-xs text-zinc-300"
+              >
+                <Check className="h-3.5 w-3.5 text-brand-400" aria-hidden="true" />
                 {a}
               </li>
             ))}

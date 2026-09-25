@@ -4,6 +4,10 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { ReactNode } from "react";
 import ThemeProvider from "@/components/ThemeProvider";
+import VLibras from "@/components/VLibras";
+import { SiteJsonLd } from "@/components/JsonLd";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.accesssim.com.br"),
@@ -27,7 +31,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <body className="min-h-dvh">
+        <a href="#conteudo" className="skip-link">
+          Pular para o conteúdo
+        </a>
         <ThemeProvider>{children}</ThemeProvider>
+        <VLibras />
+        <SiteJsonLd />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

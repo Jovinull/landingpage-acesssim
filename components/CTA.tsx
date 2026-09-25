@@ -119,7 +119,15 @@ export default function CTA() {
                 </label>
               </div>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <p className="mt-5 text-xs leading-relaxed text-zinc-500">
+                Seus dados são usados apenas para responder ao seu contato. Veja nossa{" "}
+                <a href="/privacidade" className="text-zinc-300 underline underline-offset-2 hover:text-white">
+                  Política de Privacidade
+                </a>
+                .
+              </p>
+
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <button type="submit" className="btn-primary">
                   <Mail className="h-4 w-4" />
                   Enviar por e-mail
